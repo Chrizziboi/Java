@@ -1,0 +1,49 @@
+public class TVSerieCSVRepository implements TVSerieRepository {
+
+    private HashMap<Integer, TVSerie> tvSerieHashMap = new HashMap<>();
+
+    public TVSerieCSVRepository(String fil) {
+        // create file object from file path
+        File file = new File(fil);
+
+        // TODO: read data from file and populate tvSerieHashMap
+    }
+
+    // method to write TV series data to CSV file
+    private void skrivTilCSV(HashMap<Integer, TVSerie> tvSerieHashMap, File fil) {
+        try (BufferedWriter buffskriv = new BufferedWriter(new FileWriter(fil))) {
+            for (Map.Entry<Integer, TVSerie> entry : tvSerieHashMap.entrySet()) {
+                TVSerie tvSerie = entry.getValue();
+                buffskriv.write(tvSerie.getTittel() + ";" + tvSerie.getBeskrivelse() + ";" + tvSerie.getUtgivelsesdato()
+                        + ";" + tvSerie.getBildeUrl() + ";" + tvSerie.getEpisoder());
+                buffskriv.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArrayList<TVSerie> getAlleTVSerier() {
+        // TODO: implement this method
+        return null;
+    }
+
+    @Override
+    public TVSerie getTVSerie(String TVSerieId) {
+        // TODO: implement this method
+        return null;
+    }
+
+    @Override
+    public ArrayList<Episode> getAlleEpisoder(String TVSerieTittel, int sesongNummer) {
+        // TODO: implement this method
+        return null;
+    }
+
+    @Override
+    public Episode getEpisode(String TVSerieTittel, int sesongNummer, int episodeNummer) {
+        // TODO: implement this method
+        return null;
+    }
+}
